@@ -1,0 +1,1 @@
+This app helps classical and finger style guitarists choose exercises from Mauro Giuliani's 120 Right Hand exercises based on different musical attributes and difficulty.
