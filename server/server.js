@@ -16,7 +16,7 @@ const Study = require('./models/Study');
 
 // Middleware setup 
 app.use(cors());
-app.use(bodyParser.json()); // tells the (app) server to use bodyParser
+app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: false}));
 
 mongoose
@@ -25,5 +25,35 @@ mongoose
     useCreateIndex: true, 
     useFindAndModify: false 
   })
-  .then( () => console.log('MongoDB Connected...') )
+  .then( () => console.log('\nMongoDB Connected...') )
   .catch( err => console.log(err) );
+
+// Read (GET)
+app.get('/', (req, res) => {
+
+})
+
+// Read by id (GET)
+app.get('/id:', (req, res) => {
+
+})
+
+// Create (POST)
+app.post('/', (req, res) => {
+
+})
+
+// Delete
+app.delete('/', (req, res) => {
+
+})
+
+// Update
+app.put('/', (req, res) => {
+
+})
+
+app.listen( port, () => 
+  console.log(`\nServer started on port: http://localhost:${port}\n`)
+)
+
