@@ -4,17 +4,17 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GiulianiStudySchema = new Schema({
-    studyPath: {
-      type: String,
-      required: true
-    },
-    difficultyRob: {
-      type: Number,
-      required: true
-    },
-    difficultyTennant: {
-      type: Number,
-    }
+  studyPath: {
+    type: String,
+    required: true
+  },
+  difficultyRob: {
+    type: Number,
+    required: true
+  },
+  difficultyTennant: {
+    type: Number,
+  }
 });
 
 
