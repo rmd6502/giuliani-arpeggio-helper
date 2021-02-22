@@ -1,25 +1,22 @@
-// Study Schema
+// Giuliani Study Schema
 
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const StudySchema = new Schema({
-    path: {
+const GiulianiStudySchema = new Schema({
+    studyPath: {
       type: String,
       required: true
     },
-    fingers: {
-      type: String
+    difficultyRob: {
+      type: Number,
+      required: true
     },
-    rhythm: {
-      type: String
-    },
-    texture: {
-      type: String
-    },
-    difficulty: {
-      type: String 
+    difficultyTennant: {
+      type: Number,
     }
 });
 
-module.exports = Item = mongoose.model('Study', StudySchema);
+
+// The first argument is the singular name of the collection your model is for. 
+module.exports = Item = mongoose.model('GiulianiStudy', GiulianiStudySchema);

@@ -19,6 +19,7 @@ app.use(cors());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: false}));
 
+// Initialize database 
 mongoose
   .connect(db, { 
     useNewUrlParser: true, 
@@ -48,7 +49,7 @@ app.delete('/', (req, res) => {
 
 })
 
-// Update
+// Update (PUT)
 app.put('/', (req, res) => {
 
 })
