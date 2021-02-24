@@ -19,7 +19,7 @@ app.use(cors());
 app.use(bodyParser.json()); 
 app.use(bodyParser.urlencoded({extended: false}));
 
-// Initialize database 
+// Connect to database 
 mongoose
   .connect(db, { 
     useNewUrlParser: true, 
@@ -38,7 +38,7 @@ app.post('/', (req, res) => {
   newStudy
     .save()
     .then(item => res.json(item))
-    .catch(err => res.status(500).json({ success: false}));
+    .catch(err => res.status(500).json( { success: false} ));
 });
 
 // Read (GET)
@@ -48,7 +48,7 @@ app.get('/', (req, res) => {
 });
 
 // Read by id (GET)
-app.get('/id:', (req, res) => {
+app.get('/:id', (req, res) => {
   let id = req.params.id;
   Study.findById(id, (err, data) => {
     res.json(data);
@@ -56,13 +56,17 @@ app.get('/id:', (req, res) => {
 });
 
 // Delete
-app.delete('/', (req, res) => {
-
+app.delete('/:id', (req, res) => {
+  Study.findOneAndDelete({ _id: req.params.id })
+    .then(() => res.json({ success: true }))
+    .catch(err => res.status(404).json( { success: false } ));
 })
 
 // Update (PUT)
-app.put('/', (req, res) => {
-
+app.put('/:id', (req, res) => {
+  Study.findOneAndUpdate({ _id: req.params.id} , req.body)
+    .then(() => res.json( { success: true } ))
+    .catch(err => res.status(404).json( { success: false} ));
 })
 
 app.listen( port, () => 
