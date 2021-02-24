@@ -8,13 +8,10 @@ const GiulianiStudySchema = new Schema({
     type: String,
     required: true
   },
-  difficultyRob: {
+  difficulty: {
     type: Number,
     required: true
   },
-  difficultyTennant: {
-    type: Number,
-  }
 });
 
 

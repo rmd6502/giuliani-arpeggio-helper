@@ -29,20 +29,31 @@ mongoose
   .then( () => console.log('\nMongoDB Connected...') )
   .catch( err => console.log(err) );
 
+// Create (POST)
+app.post('/', (req, res) => {
+  const newStudy = new Study({
+    studyPath: req.body.studyPath,
+    difficulty: req.body.difficulty
+  })
+  newStudy
+    .save()
+    .then(item => res.json(item))
+    .catch(err => res.status(500).json({ success: false}));
+});
+
 // Read (GET)
 app.get('/', (req, res) => {
-
-})
+  Study.find()
+    .then(items => console.log(res.json(items)));
+});
 
 // Read by id (GET)
 app.get('/id:', (req, res) => {
-
-})
-
-// Create (POST)
-app.post('/', (req, res) => {
-
-})
+  let id = req.params.id;
+  Study.findById(id, (err, data) => {
+    res.json(data);
+  })
+});
 
 // Delete
 app.delete('/', (req, res) => {
