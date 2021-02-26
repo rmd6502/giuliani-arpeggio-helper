@@ -4,6 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const GiulianiStudySchema = new Schema({
+  studyNum: {
+    type: Number,
+    required: true
+  },
   studyPath: {
     type: String,
     required: true
@@ -12,6 +16,7 @@ const GiulianiStudySchema = new Schema({
     type: Number,
     required: true
   },
+
 });
 
 

@@ -32,6 +32,7 @@ mongoose
 // Create (POST)
 app.post('/', (req, res) => {
   const newStudy = new Study({
+    studyNum: req.body.studyNum,
     studyPath: req.body.studyPath,
     difficulty: req.body.difficulty
   })
@@ -64,7 +65,7 @@ app.delete('/:id', (req, res) => {
 
 // Update (PUT)
 app.put('/:id', (req, res) => {
-  Study.findOneAndUpdate({ _id: req.params.id} , req.body)
+  Study.findOneAndUpdate( { _id: req.params.id } , req.body )
     .then(() => res.json( { success: true } ))
     .catch(err => res.status(404).json( { success: false} ));
 })
