@@ -1,0 +1,13 @@
+Back end endpoints:
+
+/add-study (POST)
+/delete-study (DELETE)
+/update-study (PUT)
+
+GET's: 
+
+/get-all-studies
+/get-randomized-studies-by-difficulty
+/get-randomized-studies-all 
+
+

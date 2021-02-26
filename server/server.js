@@ -16,8 +16,8 @@ const Study = require('./models/Study');
 
 // Middleware setup 
 app.use(cors());
-app.use(bodyParser.json()); 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.json());  
+app.use(bodyParser.urlencoded( {extended: false} ));
 
 // Connect to database 
 mongoose
@@ -38,14 +38,14 @@ app.post('/', (req, res) => {
   })
   newStudy
     .save()
-    .then(item => res.json(item))
-    .catch(err => res.status(500).json( { success: false} ));
+    .then( item => res.json(item) )
+    .catch( err => res.status(500).json( { success: false} ));
 });
 
 // Read (GET)
 app.get('/', (req, res) => {
   Study.find()
-    .then(items => console.log(res.json(items)));
+    .then( items => console.log( res.json(items) ));
 });
 
 // Read by id (GET)
@@ -58,8 +58,8 @@ app.get('/:id', (req, res) => {
 
 // Delete
 app.delete('/:id', (req, res) => {
-  Study.findOneAndDelete({ _id: req.params.id })
-    .then(() => res.json({ success: true }))
+  Study.findOneAndDelete( { _id: req.params.id })
+    .then(() => res.json( { success: true }) )
     .catch(err => res.status(404).json( { success: false } ));
 })
 
