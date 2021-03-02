@@ -29,8 +29,41 @@ mongoose
   .then( () => console.log('\nMongoDB Connected...') )
   .catch( err => console.log(err) );
 
+
+// Get all studies 
+app.get('/get-all-studies', (req, res) => {
+  Study.find()
+    .then( items => console.log( res.json(items) ));
+});
+
+// Get study by id 
+app.get('/get-studies-by-id/:id', (req, res) => {
+  let id = req.params.id;
+  Study.findById(id, (err, data) => {
+    res.json(data);
+  })
+});
+
+// Get randomized studies by difficulty
+//
+// The request object will carry two paramaters, the level of difficulty,
+// and how many studies the user wants
+app.get('/get-randomized-studies-by-difficulty', (req, res) => {
+
+})
+
+// Get randomzied studies from all 120 
+// The request object will cary just the number of studies the user wants.
+app.get('/get-randomized-studies-all', (req, res) => {
+
+})
+
+//
+// TODO: find a way to hide these endpoints behind a login 
+// or implement some form of security for thse endpoints: 
+
 // Create (POST)
-app.post('/', (req, res) => {
+app.post('/add-study', (req, res) => {
   const newStudy = new Study({
     studyNum: req.body.studyNum,
     studyPath: req.body.studyPath,
@@ -42,33 +75,20 @@ app.post('/', (req, res) => {
     .catch( err => res.status(500).json( { success: false} ));
 });
 
-// Read (GET)
-app.get('/', (req, res) => {
-  Study.find()
-    .then( items => console.log( res.json(items) ));
-});
-
-// Read by id (GET)
-app.get('/:id', (req, res) => {
-  let id = req.params.id;
-  Study.findById(id, (err, data) => {
-    res.json(data);
-  })
-});
-
 // Delete
-app.delete('/:id', (req, res) => {
+app.delete('/delete-study-by-id/:id', (req, res) => {
   Study.findOneAndDelete( { _id: req.params.id })
     .then(() => res.json( { success: true }) )
     .catch(err => res.status(404).json( { success: false } ));
 })
 
 // Update (PUT)
-app.put('/:id', (req, res) => {
+app.put('/update-study-by-id/:id', (req, res) => {
   Study.findOneAndUpdate( { _id: req.params.id } , req.body )
     .then(() => res.json( { success: true } ))
     .catch(err => res.status(404).json( { success: false} ));
 })
+
 
 app.listen( port, () => 
   console.log(`\nServer started on port: http://localhost:${port}\n`)
