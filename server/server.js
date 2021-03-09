@@ -53,7 +53,7 @@ app.get('/get-randomized-studies-by-difficulty', (req, res) => {
 })
 
 // Get randomzied studies from all 120 
-// The request object will cary just the number of studies the user wants.
+// The request object will carry just the number of studies the user wants.
 app.get('/get-randomized-studies-all', (req, res) => {
 
 })
