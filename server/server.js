@@ -7,17 +7,19 @@ const config = require('config'); // stores the URI securely
 const path = require('path');
 const cors = require('cors');
 const bodyParser = require('body-parser');
+const url = require('url');
+const querystring = require('querystring');
 const port = 5000;
 const app = express();
-
-// MongoDB Atlas setup 
-const db = config.get('mongoURI');
-const Study = require('./models/Study');
 
 // Middleware setup 
 app.use(cors());
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded( {extended: false} ));
+
+// MongoDB Atlas setup 
+const db = config.get('mongoURI');
+const Study = require('./models/Study');
 
 // Connect to database 
 mongoose
@@ -44,20 +46,33 @@ app.get('/get-studies-by-id/:id', (req, res) => {
   })
 });
 
+app.get('/get-studies-by-difficulty', (req, res) => {
+  let difficulty = req.query.difficulty;
+  let limit = req.query.limit;
+
+  Study.find( { difficulty : difficulty }, (err, data) => {
+    res.json(data);
+  })
+  // how to do this: 
+  // .limit(limit )
+
+})
+
+/*
 // Get randomized studies by difficulty
-//
 // The request object will carry two paramaters, the level of difficulty,
-// and how many studies the user wants
+// and how many studies the user wants (limit)
 app.get('/get-randomized-studies-by-difficulty', (req, res) => {
+
 
 })
 
 // Get randomzied studies from all 120 
-// The request object will carry just the number of studies the user wants.
+// The request object will carry just the number of studies the user wants (limit)
 app.get('/get-randomized-studies-all', (req, res) => {
-
+  
 })
-
+*/
 
 // TODO: find a way to hide these endpoints behind a login 
 // or implement some form of security for thse endpoints: 
