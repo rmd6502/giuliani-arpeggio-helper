@@ -50,11 +50,9 @@ app.get('/get-studies-by-difficulty', (req, res) => {
   let difficulty = req.query.difficulty;
   let limit = req.query.limit;
 
-  Study.find( { difficulty : difficulty }, (err, data) => {
+  Study.find( { difficulty : difficulty }).limit(limit).exec( (err, data ) => {
     res.json(data);
   })
-  // how to do this: 
-  // .limit(limit )
 
 })
 
