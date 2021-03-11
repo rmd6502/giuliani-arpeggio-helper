@@ -1,25 +1,37 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+// get me some of that bootstrap 
+import "bootstrap/dist/css/bootstrap.min.css";
+
+// components for react router, where they at? 
+import DisplayStudies from "./components/display-studies-component";
+import EditStudies from "./components/edit-studies-component";
+import MainPage from "./components/mainpage-component";
+
+class App extends Component {
+  render() {
+    return (
+      <Router>
+        <div className="container">
+          <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <Link to="/" className="navbar-brand">Giuliani Arpeggio Helper App</Link>
+            <div className="collapse navbar-collapse">
+              <ul className="navbar-nav mr-auto">
+                <li className="navbar-item">
+                  <Link to="/" className="nav-link">Home</Link>
+                </li>
+              </ul>
+            </div>
+          </nav>
+          <br/>
+          <Route path="/" exact component={MainPage} />
+          <Route path="/edit/:id" component={EditStudies} />
+          <Route path="/display" component={DisplayStudies} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;
