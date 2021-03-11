@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
-
-// get me some of that bootstrap 
 import "bootstrap/dist/css/bootstrap.min.css";
 
-// components for react router, where they at? 
 import DisplayStudies from "./components/display-studies-component";
 import EditStudies from "./components/edit-studies-component";
 import MainPage from "./components/mainpage-component";

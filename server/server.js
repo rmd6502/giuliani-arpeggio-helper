@@ -1,6 +1,5 @@
 /* Giuliani Arpeggio Helper App Back-end */
 
-// Express setup 
 const express = require('express');
 const mongoose = require('mongoose');
 const config = require('config'); // stores the URI securely 
@@ -11,17 +10,15 @@ const url = require('url');
 const querystring = require('querystring');
 const port = 5000;
 const app = express();
+const random = require('mongoose-query-random')
 
-// Middleware setup 
 app.use(cors());
 app.use(bodyParser.json());  
 app.use(bodyParser.urlencoded( {extended: false} ));
 
-// MongoDB Atlas setup 
 const db = config.get('mongoURI');
 const Study = require('./models/Study');
-
-// Connect to database 
+ 
 mongoose
   .connect(db, { 
     useNewUrlParser: true, 
@@ -46,31 +43,27 @@ app.get('/get-studies-by-id/:id', (req, res) => {
   })
 });
 
-app.get('/get-studies-by-difficulty', (req, res) => {
-  let difficulty = req.query.difficulty;
-  let limit = req.query.limit;
+// Get randomized studies by difficulty
+app.get('/get-randomized-studies-by-difficulty', (req, res) => {
+  let difficulty = parseInt(req.query.difficulty);
+  let limit = parseInt(req.query.limit);
 
-  Study.find({ difficulty : difficulty }).limit(limit).exec( (err, data ) => {
+  Study.find({ difficulty : difficulty }).random(limit, true, (err, data ) => {
     res.json(data);
   })
 })
 
-/*
-// Get randomized studies by difficulty
-// The request object will carry two paramaters, the level of difficulty,
-// and how many studies the user wants (limit)
-app.get('/get-randomized-studies-by-difficulty', (req, res) => {
-
-
-})
-
 // Get randomzied studies from all 120 
-// The request object will carry just the number of studies the user wants (limit)
 app.get('/get-randomized-studies-all', (req, res) => {
-  
-})
-*/
+  let limit = parseInt(req.query.limit);
 
+  Study.find().random(limit, true, (err, data ) => {
+    res.json(data);
+  })
+
+})
+
+//
 // TODO: find a way to hide these endpoints behind a login 
 // or implement some form of security for thse endpoints: 
 
