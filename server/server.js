@@ -53,18 +53,17 @@ app.get('/get-randomized-studies-by-difficulty', (req, res) => {
   })
 })
 
-// Get randomzied studies from all 120 
+// Get randomzied studies from all studies
 app.get('/get-randomized-studies-all', (req, res) => {
   let limit = parseInt(req.query.limit);
 
   Study.find().random(limit, true, (err, data ) => {
     res.json(data);
   })
-
 })
 
 //
-// TODO: find a way to hide these endpoints behind a login 
+// TODO: hide these endpoints behind a login 
 // or implement some form of security for thse endpoints: 
 
 // Create (POST)

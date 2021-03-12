@@ -16,7 +16,6 @@ const GiulianiStudySchema = new Schema({
     type: Number,
     required: true
   },
-
 });
 
 
