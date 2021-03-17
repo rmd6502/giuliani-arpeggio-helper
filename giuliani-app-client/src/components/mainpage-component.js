@@ -57,7 +57,7 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="level1"
                 value="1"
-                checked={this.state.studyDifficultyLevel === '1' }
+                defaultChecked
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">1</label>
@@ -68,7 +68,6 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="level2"
                 value="2"
-                checked={this.state.studyDifficultyLevel === '2' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">2</label>
@@ -78,8 +77,7 @@ export default class MainPage extends Component {
                 type="radio"
                 name="difficultyLevel"
                 id="level3"
-                value="3"
-                checked={this.state.studyDifficultyLevel === '3' }
+                value="3" 
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">3</label>
@@ -90,7 +88,6 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="level4"
                 value="4"
-                checked={this.state.studyDifficultyLevel === '4' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">4</label>
@@ -101,7 +98,6 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="level5"
                 value="5"
-                checked={this.state.studyDifficultyLevel === '5' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">5</label>
@@ -112,7 +108,6 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="level6"
                 value="6"
-                checked={this.state.studyDifficultyLevel === '6' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">6</label>
@@ -123,7 +118,6 @@ export default class MainPage extends Component {
                 name="difficultyLevel"
                 id="allLevels"
                 value="all"
-                checked={this.state.studyDifficultyLevel === 'all' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
               <label className="form-check-label">All</label>
@@ -133,9 +127,10 @@ export default class MainPage extends Component {
           <div className="form-group">
             <label>Limit results (1-10): </label>
             <input type="number"
-              className="form-control"
+              className="form-control"             
               min="1"
               max="10"
+              
               onChange={this.onChangeStudyResultLimit}
             />
           </div>
