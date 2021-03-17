@@ -2,30 +2,19 @@
 
 import React, { Component } from 'react';
 
-// studyNoDifficylty will be a check box most likely
-// study difficulty level will be radio buttons
-// study result limit will be input box 
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      studyNoDifficulty: false,
       studyDifficultyLevel: '',
       studyResulLimit: '',
     }
 
-    this.onChangeStudyNoDifficulty = this.onChangeStudyNoDifficulty.bind(this);
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
     this.onChangeStudyResultLimit = this.onChangeStudyResultLimit.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 
-  }
-
-  onChangeStudyNoDifficulty(e) {
-    this.setState({
-      studyNoDifficulty: e.target.value
-    })
   }
 
   onChangeStudyDifficultyLevel(e) {
@@ -44,7 +33,6 @@ export default class MainPage extends Component {
     e.preventDefault();
 
     console.log(`Form submitted:`);
-    console.log(`All studies queried: ${this.state.studyNoDifficulty}`);
     console.log(`Difficulty Level: ${this.state.studyDifficultyLevel}`);
     console.log(`Limit results: ${this.state.studyResulLimit}`);
 
@@ -55,82 +43,112 @@ export default class MainPage extends Component {
   render() {
     return (
       <div style={{marginTop: 10}}>
-        <h4>Query Giuliani 120 Righ Hand Studies Database</h4>
+        <h4>Query Giuliani 120 Right Hand Studies Database</h4>
+        <h6>Results are randomized.</h6>
+        <br></br>
+        <h5>Level:</h5>
 
         <form onSubmit={this.onSubmit}>
-
+          
           <div className="form-group">
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level1"
+                name="difficultyLevel"
                 id="level1"
                 value="1"
-                checked={this.state.animal_isEndangered === '1' }
+                checked={this.state.studyDifficultyLevel === '1' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 1</label>
+              <label className="form-check-label">1</label>
             </div>
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level2"
+                name="difficultyLevel"
                 id="level2"
                 value="2"
-                checked={this.state.animal_isEndangered === '2' }
+                checked={this.state.studyDifficultyLevel === '2' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 2</label>
+              <label className="form-check-label">2</label>
             </div>
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level3"
+                name="difficultyLevel"
                 id="level3"
                 value="3"
-                checked={this.state.animal_isEndangered === '3' }
+                checked={this.state.studyDifficultyLevel === '3' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 3</label>
+              <label className="form-check-label">3</label>
             </div>
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level4"
+                name="difficultyLevel"
                 id="level4"
                 value="4"
-                checked={this.state.animal_isEndangered === '4' }
+                checked={this.state.studyDifficultyLevel === '4' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 4</label>
+              <label className="form-check-label">4</label>
             </div>
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level5"
+                name="difficultyLevel"
                 id="level5"
                 value="5"
-                checked={this.state.animal_isEndangered === '5' }
+                checked={this.state.studyDifficultyLevel === '5' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 5</label>
+              <label className="form-check-label">5</label>
             </div>
             <div className="form-check-inline">
               <input className="form-check-input"
                 type="radio"
-                name="level6"
+                name="difficultyLevel"
                 id="level6"
                 value="6"
-                checked={this.state.animal_isEndangered === '6' }
+                checked={this.state.studyDifficultyLevel === '6' }
                 onChange={this.onChangeStudyDifficultyLevel}
               />
-              <label className="form-check-label">Level 6</label>
+              <label className="form-check-label">6</label>
+            </div>
+            <div className="form-check-inline">
+              <input className="form-check-input"
+                type="radio"
+                name="difficultyLevel"
+                id="allLevels"
+                value="all"
+                checked={this.state.studyDifficultyLevel === 'all' }
+                onChange={this.onChangeStudyDifficultyLevel}
+              />
+              <label className="form-check-label">All</label>
             </div>
           </div>
 
-        </form>
+          <div className="form-group">
+            <label>Limit results (1-10): </label>
+            <input type="number"
+              className="form-control"
+              min="1"
+              max="10"
+              onChange={this.onChangeStudyResultLimit}
+            />
+          </div>
+          
+          <div className="form-group">
+            <input type="submit" value="Submit" className="btn btn-primary" />
+          </div>
 
+        </form>
+        
       </div>
+      
     )
+
   }
 }

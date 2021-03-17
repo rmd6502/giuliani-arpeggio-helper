@@ -12,11 +12,11 @@ class App extends Component {
       <Router>
         <div className="container">
           <nav className="navbar navbar-expand-lg navbar-light bg-light">
-            <Link to="/" className="navbar-brand">Giuliani Arpeggio Helper App</Link>
+            <Link to="/" className="navbar-brand">Giuliani Arpeggios Helper App</Link>
             <div className="collapse navbar-collapse">
               <ul className="navbar-nav mr-auto">
                 <li className="navbar-item">
-                  <Link to="/" className="nav-link">Home</Link>
+                  <Link to="/" className="nav-link">Main</Link>
                 </li>
               </ul>
             </div>
