@@ -53,6 +53,7 @@ export default class MainPage extends Component {
               <input type="number"
                 min="1"
                 max="6"
+                defaultValue="1"
                 onChange={this.onChangeStudyDifficultyLevel}
               />
           </div>
@@ -61,6 +62,7 @@ export default class MainPage extends Component {
             <input type="number"         
               min="1"
               max="10"
+              defaultValue="1"
               onChange={this.onChangeStudyResultLimit}
             />
           </div>
