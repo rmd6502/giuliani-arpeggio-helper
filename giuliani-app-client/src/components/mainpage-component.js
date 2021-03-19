@@ -5,13 +5,15 @@
 
 import React, { Component } from 'react';
 
+
+
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      studyDifficultyLevel: '',
-      studyResulLimit: '',
+      studyDifficultyLevel: '1',
+      studyResulLimit: '1',
     }
 
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
@@ -53,7 +55,7 @@ export default class MainPage extends Component {
               <input type="number"
                 min="1"
                 max="6"
-                defaultValue="1"
+                value={this.state.studyDifficultyLevel}
                 onChange={this.onChangeStudyDifficultyLevel}
               />
           </div>
@@ -62,7 +64,7 @@ export default class MainPage extends Component {
             <input type="number"         
               min="1"
               max="10"
-              defaultValue="1"
+              value={this.state.studyResulLimit}
               onChange={this.onChangeStudyResultLimit}
             />
           </div>
