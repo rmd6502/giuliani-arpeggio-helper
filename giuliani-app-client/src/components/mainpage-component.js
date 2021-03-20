@@ -12,10 +12,12 @@ export default class MainPage extends Component {
     this.state = {
       studyDifficultyLevel: '1',
       studyResultLimit: '1',
+      studyNoDifficulty: false
     }
 
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
     this.onChangeStudyResultLimit = this.onChangeStudyResultLimit.bind(this);
+    this.onChangeStudyNoDifficulty = this.onChangeStudyNoDifficulty.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -31,10 +33,18 @@ export default class MainPage extends Component {
     })
   }
 
+  onChangeStudyNoDifficulty(e) {
+    this.setState({
+      studyNoDifficulty: e.target.value
+    })
+  }
+
   onSubmit(e) {
     e.preventDefault();
+
     console.log(`Difficulty Level: ${this.state.studyDifficultyLevel}`);
     console.log(`Limit results: ${this.state.studyResultLimit}`);
+    console.log(`No difficulty level: ${this.state.studyNoDifficulty}`)
 
     this.props.history.push('/display');
   }
@@ -48,6 +58,7 @@ export default class MainPage extends Component {
         <br></br>
         
         <form onSubmit={this.onSubmit}>     
+
           <div className="form-group">
             <label>Enter Difficulty Level (1-6)</label>
               <input type="number"
@@ -58,6 +69,18 @@ export default class MainPage extends Component {
                 onChange={this.onChangeStudyDifficultyLevel}
               />
           </div>
+
+          <div className="form-group">
+            <label>No Difficulty Level::</label>
+            <input
+              name="noDifficultyLevel"
+              type="checkbox"
+              checked={this.state.studyNoDifficulty }
+              onChange={this.onChangeStudyNoDifficulty}
+            />
+            
+          </div>
+
           <div className="form-group">
             <label>Limit results (1-10)</label>
             <input type="number"       
@@ -68,9 +91,11 @@ export default class MainPage extends Component {
               onChange={this.onChangeStudyResultLimit}
             />
           </div>
+
           <div className="form-group">
             <input type="submit" value="Submit" className="btn btn-primary" />
           </div>
+
         </form> 
 
       </div>  
