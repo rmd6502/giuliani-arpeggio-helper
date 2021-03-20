@@ -53,6 +53,7 @@ export default class MainPage extends Component {
           <div className="form-group">
             <label>Enter Difficulty Level (1-6)</label>
               <input type="number"
+                className="form-control"
                 min="1"
                 max="6"
                 value={this.state.studyDifficultyLevel}
@@ -61,7 +62,8 @@ export default class MainPage extends Component {
           </div>
           <div className="form-group">
             <label>Limit results (1-10)</label>
-            <input type="number"         
+            <input type="number"       
+              className="form-control"  
               min="1"
               max="10"
               value={this.state.studyResulLimit}
