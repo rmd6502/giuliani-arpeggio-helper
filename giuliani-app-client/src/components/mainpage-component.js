@@ -5,15 +5,13 @@
 
 import React, { Component } from 'react';
 
-
-
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
       studyDifficultyLevel: '1',
-      studyResulLimit: '1',
+      studyResultLimit: '1',
     }
 
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
@@ -29,14 +27,14 @@ export default class MainPage extends Component {
 
   onChangeStudyResultLimit(e) {
     this.setState({
-      studyResulLimit: e.target.value
+      studyResultLimit: e.target.value
     })
   }
 
   onSubmit(e) {
     e.preventDefault();
     console.log(`Difficulty Level: ${this.state.studyDifficultyLevel}`);
-    console.log(`Limit results: ${this.state.studyResulLimit}`);
+    console.log(`Limit results: ${this.state.studyResultLimit}`);
 
     this.props.history.push('/display');
   }
@@ -66,7 +64,7 @@ export default class MainPage extends Component {
               className="form-control"  
               min="1"
               max="10"
-              value={this.state.studyResulLimit}
+              value={this.state.studyResultLimit}
               onChange={this.onChangeStudyResultLimit}
             />
           </div>
