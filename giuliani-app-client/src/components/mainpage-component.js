@@ -41,12 +41,29 @@ export default class MainPage extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-
+    console.log(`Form Submitted:`);
     console.log(`Difficulty Level: ${this.state.studyDifficultyLevel}`);
     console.log(`Limit results: ${this.state.studyResultLimit}`);
     console.log(`No difficulty level: ${this.state.studyNoDifficulty}`)
 
-    this.props.history.push('/display');
+    const diffLevel = this.state.studyDifficultyLevel;
+    const resultLimit = this.state.studyResultLimit;
+
+    fetch('http://localhost:5000/get-randomized-studies-by-difficulty?' + new URLSearchParams({
+        difficulty: diffLevel,
+        limit: resultLimit
+      }), {
+        method: "GET",
+        headers: {
+          Accept: "application/json",
+          "Content-Type": "application/json"
+        }
+
+    })
+
+
+
+    // this.props.history.push('/display');
   }
 
   render() {
@@ -71,14 +88,13 @@ export default class MainPage extends Component {
           </div>
 
           <div className="form-group">
-            <label>No Difficulty Level::</label>
+            <label>No Difficulty Level::cd</label>
             <input
               name="noDifficultyLevel"
               type="checkbox"
               checked={this.state.studyNoDifficulty }
               onChange={this.onChangeStudyNoDifficulty}
             />
-            
           </div>
 
           <div className="form-group">
