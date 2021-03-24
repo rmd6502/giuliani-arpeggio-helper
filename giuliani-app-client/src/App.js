@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-
 import EditStudies from "./components/edit-studies-component";
 import MainPage from "./components/mainpage-component";
 

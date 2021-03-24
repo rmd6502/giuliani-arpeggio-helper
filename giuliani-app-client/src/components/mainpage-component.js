@@ -29,6 +29,7 @@ export default class MainPage extends Component {
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
     this.onChangeStudyResultLimit = this.onChangeStudyResultLimit.bind(this);
     this.onChangeStudyNoDifficulty = this.onChangeStudyNoDifficulty.bind(this);
+    this.studyList = this.studyList.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
   }
 
@@ -52,11 +53,7 @@ export default class MainPage extends Component {
 
   onSubmit(e) {
     e.preventDefault();
-    console.log(`Form Submitted:`);
-    console.log(`Difficulty Level: ${this.state.studyDifficultyLevel}`);
-    console.log(`Limit results: ${this.state.studyResultLimit}`);
-    console.log(`No difficulty level: ${this.state.studyNoDifficulty}`)
-
+  
     const diffLevel = this.state.studyDifficultyLevel;
     const resultLimit = this.state.studyResultLimit;
 
@@ -71,29 +68,30 @@ export default class MainPage extends Component {
         }
     })
     .then( res => {
-      console.log( "Giuliani database response" )
       return res.json()
     })
     .then ( data => {
-      console.log(" studies data ")
       this.setState({ studies: data })
-      console.log(this.state.studies);
+      console.log( this.state.studies) ;
     })
     .catch( (error) => {
       console.log(error);
     })
 
+    // reset state for 'no difficulty level'
     this.setState({
       studyNoDifficulty: false
     })
 
   }
 
-  studyList () {
+  studyList() {
     if(this.state.studies) {
       return this.state.studies.map( (currentStudy, i ) => {
         return ( <Study study={currentStudy} studyID={i} /> )
       })
+    } else {
+      return null; 
     }
   }
 
@@ -119,7 +117,7 @@ export default class MainPage extends Component {
           </div>
 
           <div className="form-group">
-            <label>No Difficulty Level:</label>
+            <label>Or No Difficulty Level:</label>
             <input
               name="noDifficultyLevel"
               type="checkbox"
@@ -146,8 +144,15 @@ export default class MainPage extends Component {
         </form> 
 
         <div>
-        <h4>Giuliani Study List: </h4>
+        <h4>Results: </h4>
         <table className="table table-striped" style={{ marginTop: 20 }} >
+          <thead>
+            <tr>
+              <th>Level</th>
+              <th>Number</th>
+              <th>Study</th>
+            </tr>
+          </thead>
           <tbody>
             { this.studyList() }
           </tbody>
