@@ -5,6 +5,16 @@
 
 import React, { Component } from 'react';
 
+const Study = props => {
+  return (
+    <tr key={props.studyID}>
+      <td>{props.study.difficulty}</td>
+      <td>{props.study.studyNum}</td>
+      <td>{props.study.studyPath}</td>
+    </tr>
+  )
+}
+
 export default class MainPage extends Component {
   constructor(props) {
     super(props);
@@ -79,6 +89,14 @@ export default class MainPage extends Component {
 
   }
 
+  studyList () {
+    if(this.state.studies) {
+      return this.state.studies.map( (currentStudy, i ) => {
+        return ( <Study study={currentStudy} studyID={i} /> )
+      })
+    }
+  }
+
   render() {
     return (
       <div style={{marginTop: 10}}>
@@ -126,6 +144,15 @@ export default class MainPage extends Component {
           </div>
 
         </form> 
+
+        <div>
+        <h4>Giuliani Study List: </h4>
+        <table className="table table-striped" style={{ marginTop: 20 }} >
+          <tbody>
+            { this.studyList() }
+          </tbody>
+        </table>
+      </div>
 
       </div>  
     )
