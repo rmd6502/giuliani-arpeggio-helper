@@ -28,7 +28,7 @@ mongoose
   .then( () => console.log('\nMongoDB Connected...') )
   .catch( err => console.log(err) );
 
-
+// THE GETS ------------------------------------------------------
 // Get all studies 
 app.get('/get-all-studies', (req, res) => {
   Study.find()
@@ -62,9 +62,9 @@ app.get('/get-randomized-studies-all', (req, res) => {
   })
 })
 
-//
+//-----------------------------------------------------------------
 // TODO: hide these endpoints behind a login 
-// or implement some form of security for thse endpoints: 
+// or implement some form of security for these endpoints: 
 
 // Create (POST)
 app.post('/add-study', (req, res) => {
@@ -76,7 +76,7 @@ app.post('/add-study', (req, res) => {
   newStudy
     .save()
     .then( item => res.json(item) )
-    .catch( err => res.status(500).json( { success: false} ));
+    .catch( err => res.status(500).json( { success: false}  ));
 });
 
 // Delete
@@ -90,7 +90,7 @@ app.delete('/delete-study-by-id/:id', (req, res) => {
 app.put('/update-study-by-id/:id', (req, res) => {
   Study.findOneAndUpdate( { _id: req.params.id } , req.body )
     .then(() => res.json( { success: true } ))
-    .catch(err => res.status(404).json( { success: false} ));
+    .catch(err => res.status(404).json( { success: false } ));
 })
 
 app.listen( port, () => 

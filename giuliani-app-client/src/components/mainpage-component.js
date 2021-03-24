@@ -10,7 +10,7 @@ const Study = props => {
     <tr key={props.studyID}>
       <td>{props.study.difficulty}</td>
       <td>{props.study.studyNum}</td>
-      <td>{props.study.studyPath}</td>
+      <td><img src={props.study.studyPath}></img></td>
     </tr>
   )
 }
@@ -72,13 +72,12 @@ export default class MainPage extends Component {
     })
     .then ( data => {
       this.setState({ studies: data })
-      console.log( this.state.studies) ;
     })
     .catch( (error) => {
       console.log(error);
     })
 
-    // reset state for 'no difficulty level'
+    // reset state for 'no difficulty level' checkbox
     this.setState({
       studyNoDifficulty: false
     })
@@ -88,7 +87,7 @@ export default class MainPage extends Component {
   studyList() {
     if(this.state.studies) {
       return this.state.studies.map( (currentStudy, i ) => {
-        return ( <Study study={currentStudy} studyID={i} /> )
+        return ( <Study study={currentStudy} studyID={i.toString} /> )
       })
     } else {
       return null; 
@@ -145,7 +144,7 @@ export default class MainPage extends Component {
 
         <div>
         <h4>Results: </h4>
-        <table className="table table-striped" style={{ marginTop: 20 }} >
+        <table className="table" style={{ marginTop: 20 }} >
           <thead>
             <tr>
               <th>Level</th>
