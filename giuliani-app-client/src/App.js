@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.min.css";
 
-import DisplayStudies from "./components/display-studies-component";
+
 import EditStudies from "./components/edit-studies-component";
 import MainPage from "./components/mainpage-component";
 
@@ -24,7 +24,6 @@ class App extends Component {
           <br/>
           <Route path="/" exact component={MainPage} />
           <Route path="/edit/:id" component={EditStudies} />
-          <Route path="/display" component={DisplayStudies} />
         </div>
       </Router>
     );

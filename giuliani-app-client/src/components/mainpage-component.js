@@ -12,7 +12,8 @@ export default class MainPage extends Component {
     this.state = {
       studyDifficultyLevel: '1',
       studyResultLimit: '1',
-      studyNoDifficulty: false
+      studyNoDifficulty: false,
+      studies: []
     }
 
     this.onChangeStudyDifficultyLevel = this.onChangeStudyDifficultyLevel.bind(this);
@@ -58,12 +59,24 @@ export default class MainPage extends Component {
           Accept: "application/json",
           "Content-Type": "application/json"
         }
-
+    })
+    .then( res => {
+      console.log( "Giuliani database response" )
+      return res.json()
+    })
+    .then ( data => {
+      console.log(" studies data ")
+      this.setState({ studies: data })
+      console.log(this.state.studies);
+    })
+    .catch( (error) => {
+      console.log(error);
     })
 
+    this.setState({
+      studyNoDifficulty: false
+    })
 
-
-    // this.props.history.push('/display');
   }
 
   render() {
@@ -88,7 +101,7 @@ export default class MainPage extends Component {
           </div>
 
           <div className="form-group">
-            <label>No Difficulty Level::cd</label>
+            <label>No Difficulty Level:</label>
             <input
               name="noDifficultyLevel"
               type="checkbox"
