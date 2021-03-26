@@ -7,7 +7,7 @@ import React, { Component } from 'react';
 
 const Study = props => {
   return (
-    <tr key={props.studyID}>
+    <tr key={props.study.studyID}>
       <td>{props.study.difficulty}</td>
       <td><img src={props.study.studyPath} alt="Giuliani Study"></img></td>
     </tr>
@@ -118,7 +118,7 @@ export default class MainPage extends Component {
   studyList() {
     if(this.state.studies) {
       return this.state.studies.map( (currentStudy, i ) => {
-        return ( <Study study={currentStudy} studyID={i.toString} /> )
+        return ( <Study study={currentStudy} studyID={i.toString()} /> )
       })
     } else {
       return null; 
@@ -136,11 +136,11 @@ export default class MainPage extends Component {
         <form onSubmit={this.onSubmit}>     
 
           <div className="form-group">
-            <label>Enter Difficulty Level (1-6)</label>
+            <label>Enter Difficulty Level (1-7)</label>
               <input type="number"
                 className="form-control"
                 min="1"
-                max="6"
+                max="7"
                 value={this.state.studyDifficultyLevel}
                 onChange={this.onChangeStudyDifficultyLevel}
               />
@@ -178,8 +178,7 @@ export default class MainPage extends Component {
         <table className="table" style={{ marginTop: 20 }} >
           <thead>
             <tr>
-              <th>Level</th>
-              
+              <th>Level</th>             
               <th>Study</th>
             </tr>
           </thead>
