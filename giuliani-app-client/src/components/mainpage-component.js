@@ -130,11 +130,10 @@ export default class MainPage extends Component {
       <div style={{marginTop: 10}}>
         
         <h4>Query Giuliani 120 Right Hand Studies</h4>
-        <h6>Results are randomized.</h6>
+        <h6>Results are randomized</h6>
         <br></br>
         
         <form onSubmit={this.onSubmit}>     
-
           <div className="form-group">
             <label>Enter Difficulty Level (1-7)</label>
               <input type="number"
@@ -170,23 +169,22 @@ export default class MainPage extends Component {
           <div className="form-group">
             <input type="submit" value="Submit" className="btn btn-primary" />
           </div>
-
         </form> 
 
         <div>
-        <h4>Results: </h4>
-        <table className="table" style={{ marginTop: 20 }} >
-          <thead>
-            <tr>
-              <th>Level</th>             
-              <th>Study</th>
-            </tr>
-          </thead>
-          <tbody>
-            { this.studyList() }
-          </tbody>
-        </table>
-      </div>
+          <h4>Results: </h4>
+          <table className="table" style={{ marginTop: 20 }} >
+            <thead>
+             <tr>
+                <th>Level</th>             
+                <th>Study</th>
+             </tr>
+            </thead>
+            <tbody>
+             { this.studyList() }
+            </tbody>
+          </table>
+        </div>
 
       </div>  
     )
