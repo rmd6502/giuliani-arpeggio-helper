@@ -129,9 +129,7 @@ export default class MainPage extends Component {
     return (
       <div style={{marginTop: 10}}>
         
-        <h4>Query Giuliani 120 Right Hand Studies</h4>
-        <h6>Results are randomized</h6>
-        <br></br>
+        
         
         <form onSubmit={this.onSubmit}>     
           <div className="form-group">
@@ -172,7 +170,7 @@ export default class MainPage extends Component {
         </form> 
 
         <div>
-          <h4>Results: </h4>
+          <h5>Results: </h5>
           <table className="table" style={{ marginTop: 20 }} >
             <thead>
              <tr>
