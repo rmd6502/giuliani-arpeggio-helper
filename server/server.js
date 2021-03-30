@@ -13,8 +13,6 @@ const app = express();
 const random = require('mongoose-query-random')
 
 app.use(cors());
-app.use(bodyParser.json());  
-app.use(bodyParser.urlencoded( {extended: false} ));
 
 const db = config.get('mongoURI');
 const Study = require('./models/Study');
@@ -63,8 +61,6 @@ app.get('/get-randomized-studies-all', (req, res) => {
 })
 
 //-----------------------------------------------------------------
-// TODO: hide these endpoints behind a login 
-// or implement some form of security for these endpoints: 
 
 // Create (POST)
 app.post('/add-study', (req, res) => {
@@ -93,6 +89,7 @@ app.put('/update-study-by-id/:id', (req, res) => {
     .catch(err => res.status(404).json( { success: false } ));
 })
 
+// --------------------------------------------------------------------
 app.listen( port, () => 
   console.log(`\nServer started on port: http://localhost:${port}\n`)
 )

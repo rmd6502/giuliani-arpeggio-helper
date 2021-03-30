@@ -1,8 +1,5 @@
 // Main page component
 
-// Simplified entry.
-// TODO: Do a radio button version with .map
-
 import React, { Component } from 'react';
 
 const Study = props => {
@@ -69,7 +66,7 @@ export default class MainPage extends Component {
     .then( res => {
       return res.json()
     })
-    .then ( data => {
+    .then( data => {
       this.setState({ studies: data })
     })
     .catch( (error) => {
@@ -128,9 +125,7 @@ export default class MainPage extends Component {
   render() {
     return (
       <div style={{marginTop: 10}}>
-        
-        
-        
+         
         <form onSubmit={this.onSubmit}>     
           <div className="form-group">
             <label>Enter Difficulty Level (1-7)</label>
