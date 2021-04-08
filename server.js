@@ -14,7 +14,7 @@ const random = require('mongoose-query-random')
 
 app.use(cors());
 
-const db = process.env.MONGODB_URI;
+const db = process.env.MONGODB_URL;
 const Study = require('./models/Study');
  
 mongoose
