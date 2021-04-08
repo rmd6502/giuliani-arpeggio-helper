@@ -90,7 +90,7 @@ app.put('/update-study-by-id/:id', (req, res) => {
 })
 
 // --------------------------------------------------------------------
-app.listen( port, () => 
+app.listen( port, "0.0.0.0", () => 
   console.log(`\nServer started on port: http://localhost:${port}\n`)
 )
 
