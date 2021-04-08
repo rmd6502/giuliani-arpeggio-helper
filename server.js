@@ -8,7 +8,7 @@ const cors = require('cors');
 const bodyParser = require('body-parser');
 const url = require('url');
 const querystring = require('querystring');
-const port = 5000;
+const port = 80;
 const app = express();
 const random = require('mongoose-query-random')
 
